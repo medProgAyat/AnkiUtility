@@ -157,6 +157,13 @@ flask db upgrade
 | `/api/export/json` | POST | خروجی JSON کارت‌های انتخابی |
 | `/api/export/apkg` | POST | خروجی `.apkg` برای یک پروژه یا شناسه‌های کارت |
 | `/api/preview` | POST | پیش‌نمایش زنده برای یک قالب + فیلدها |
+| `/api/imports/apkg` | POST | وارد کردن بسته .apkg انکی – استخراج دسته‌ها، قالب‌ها و کارت‌ها. فایل `file` و `project_id` اختیاری را می‌پذیرد. خروجی `created_cards`، `created_templates`، `created_decks` و `sample` |
+
+- **وارد کردن .apkg** با خواندن `collection.anki2` از فایل بارگذاری‌شده کار می‌کند. اگر طرح‌واره داخلی پایگاه داده متفاوت باشد یا وجود نداشته باشد، endpoint خطا برمی‌گرداند. وارد کردن تکراری ممکن است دسته/قالب‌های جدیدی ایجاد کند (هنوز حذف تکراری ندارد). فایل‌های موقت استخراج‌شده از `/tmp` پس از وارد کردن پاک می‌شوند.برای استفاده از دستور زیر استفاده کنید:
+
+```bash
+curl -F "file=@/path/to/file.apkg" -F "project_id=1" http://localhost:5000/api/imports/apkg
+```
 
 ---
 

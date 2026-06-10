@@ -163,9 +163,16 @@ flask db upgrade
 | `/api/templates/:id` | PUT | Update template |
 | `/api/imports/upload` | POST | Upload CSV → returns columns & sample rows |
 | `/api/imports/apply` | POST | Apply mapped rows to create cards |
+| `/api/imports/apkg` | POST | Import a .apkg Anki package – extracts decks, templates, cards. Accepts `file` (multipart) and optional `project_id`. Returns `created_cards`, `created_templates`, `created_decks`, `sample` |
 | `/api/export/json` | POST | Export selected cards as JSON |
 | `/api/export/apkg` | POST | Export project/card IDs as `.apkg` Anki package |
 | `/api/preview` | POST | Render live preview for a template + fields |
+
+- **.apkg import** works by reading `collection.anki2` from the uploaded file. If the internal database schema differs or is missing, the endpoint returns an error. Duplicates on repeated imports may create new decks/templates (no deduping yet). Extracted temporary files are cleaned up from `/tmp` after import. use:
+
+```bash
+curl -F "file=@/path/to/file.apkg" -F "project_id=1" http://localhost:5000/api/imports/apkg
+```
 
 ---
 
