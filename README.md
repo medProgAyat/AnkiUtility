@@ -25,6 +25,7 @@
 
 ## 📋 Table of Contents
 
+- [📸 Screenshots](#-screenshots)
 - [Key Features](#-key-features)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
@@ -36,6 +37,18 @@
 - [Notes & Troubleshooting](#-notes--troubleshooting)
 - [Contributing](#-contributing)
 - [License](#-license)
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="./screenshots/Screenshot%201405-03-21%20at%2002.27.42.png" alt="Main interface" width="80%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  <p><em>Main interface: card table editor & CSV import preview</em></p>
+  
+  <img src="./screenshots/Screenshot%201405-03-21%20at%2002.28.48.png" alt="Template editor" width="80%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  <p><em>Template editor with live split preview</em></p>
+</div>
 
 ---
 
