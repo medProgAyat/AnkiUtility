@@ -1,99 +1,205 @@
-# AnkiUtility
+<!-- Persian Translation Badge -->
+[![README فارسی](https://img.shields.io/badge/📖_README-فارسی-0066cc?style=for-the-badge&logo=googletranslate&logoColor=white)](README_fa.md)
 
-AnkiUtility is a full-stack flashcard editor and exporter that simplifies creating, editing and exporting Anki decks.
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/nicehash/awesome-anki/main/assets/anki-logo.svg" height="38" alt="Anki logo" /> AnkiUtility
+</h1>
+<p align="center">
+  <em>Full‑stack flashcard editor & exporter for Anki decks</em>
+  <br/>
+  <strong>Create · Edit · Preview · Export</strong>
+</p>
 
-Key features
-- Visual CSV import with column mapping and editable import table
-- Inline card table editor (CRUD) with soft-delete, undo and permanent delete
-- Template editor (HTML + CSS) with live split preview
-- Export as JSON or .apkg (Anki package) using genanki
-- Project, deck and template management
-- Multi-language UI (English, Persian/Farsi, Arabic) with automatic RTL layout for rtl locales
-- Toasts anchored to action buttons with undo and progress
+<p align="center">
+  <!-- Tech stack badges -->
+  <img src="https://img.shields.io/badge/Backend-Flask-000000?logo=flask&logoColor=white" alt="Flask" />
+  <img src="https://img.shields.io/badge/Frontend-React-61DAFB?logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Build-Vite-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/DB-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Tests-Pytest-0A9EDC?logo=pytest&logoColor=white" alt="Pytest" />
+  <img src="https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest&logoColor=white" alt="Vitest" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License MIT" />
+</p>
 
-Tech stack
-- Backend: Flask + Flask-SQLAlchemy + Flask-Migrate (SQLite by default)
-- Frontend: Vite + React, CodeMirror for template editing
-- Tests: pytest for backend, Vitest + Testing Library for frontend
+---
 
-Project structure (top-level)
-- backend/ — Flask app, models, API blueprints, migrations
-- frontend/ — Vite React app, components, i18n, tests
-- README.md — this file
+## 📋 Table of Contents
 
-Quickstart (development)
-Prereqs: Python 3.10+, Node 18+, npm or yarn
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Quickstart](#-quickstart)
+- [Database & Migrations](#-database--migrations)
+- [API Overview](#-api-overview)
+- [I18n & RTL](#-i18n--rtl)
+- [Testing](#-testing)
+- [Notes & Troubleshooting](#-notes--troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-Backend
-1. cd backend
-2. python -m venv .venv
-3. source .venv/bin/activate   # on Windows: .venv\Scripts\activate
-4. pip install -r requirements.txt
-5. export FLASK_APP=app             # Windows PowerShell: $env:FLASK_APP = 'app'
-6. flask db upgrade                # applies bundled migrations and creates sqlite DB (anki.db)
-7. flask run --port 5000           # or: gunicorn -w 1 "app:create_app()"
+---
 
-Environment
-- The app uses SQLite by default at backend/anki.db. To override, set SQLALCHEMY_DATABASE_URI in instance config or environment before starting Flask.
+## 🚀 Key Features
 
-Frontend
-1. cd frontend
-2. npm install
-3. npm run dev        # starts Vite dev server (usually http://localhost:5173)
-4. npm test           # run frontend unit tests (vitest)
+| Feature | Description |
+|---------|-------------|
+| 📥 **Visual CSV Import** | Upload CSV, map columns, and review data in an editable import table before creating cards |
+| ✏️ **Inline Card Editor** | Full CRUD with soft‑delete, undo and permanent delete – all from a spreadsheet‑like interface |
+| 🎨 **Template Editor** | HTML + CSS editor (CodeMirror) with a live, split‑screen preview of your card |
+| 📦 **Flexible Export** | Export selected cards as JSON or as a ready‑to‑use `.apkg` Anki package (`genanki`) |
+| 🗂️ **Project Management** | Organise work by projects, decks and templates |
+| 🌍 **Multi‑language UI** | English, فارسی (Persian/Farsi), العربية (Arabic) – automatic RTL layout for right‑to‑left locales |
+| 🔔 **Smart Toasts** | Action‑anchored notifications with undo support and progress indication |
 
-Running full app
-- Start backend (port 5000) and frontend (port 5173). The frontend calls backend APIs under /api (CORS enabled for dev).
+---
 
-Database & migrations
-- Flask-Migrate is configured. If you change models:
-  flask db migrate -m "msg"
-  flask db upgrade
+## 🛠️ Tech Stack
 
-API overview (important endpoints)
-- GET /api/cards?project_id=:id — list (non-deleted) cards
-- POST /api/cards — create card { fields, tags, deck_id?, template_id? }
-- PUT /api/cards/:id — update card
-- DELETE /api/cards/:id — soft-delete card
-- POST /api/cards/batch-delete — batch soft-delete { ids: [...] }
-- POST /api/cards/restore — restore soft-deleted { ids: [...] }
-- POST /api/cards/permanent-delete — permanently delete { ids: [...] }
+**Backend**  
+`Flask` · `Flask‑SQLAlchemy` · `Flask‑Migrate` (SQLite by default)
 
-- GET /api/templates — list templates
-- POST /api/templates — create template
-- PUT /api/templates/:id — update template
+**Frontend**  
+`Vite` · `React` · `CodeMirror` (template editing) · `i18n` with dynamic RTL
 
-- POST /api/imports/upload — upload CSV (server parses and returns columns/sample)
-- POST /api/imports/apply — apply mapped rows to create cards (accepts mapped_rows or mapping)
+**Testing**  
+`pytest` (backend) · `Vitest` + `Testing Library` (frontend)
 
-- POST /api/export/json — export selected cards as JSON
-- POST /api/export/apkg — export a project or selected card IDs as .apkg (Anki package)
+---
 
-- POST /api/preview — render preview for a template+fields (used by live preview)
+## 📁 Project Structure (top‑level)
 
-I18n & RTL behavior
-- UI strings live in frontend/src/i18n.js. Supported locales: en, fa, ar.
-- Changing the locale updates document.documentElement.dir to 'ltr' or 'rtl'.
-- Code editors (HTML/CSS) are explicitly forced to LTR so code remains readable in RTL locales.
+```
+.
+├── backend/            Flask app, models, API blueprints, migrations
+├── frontend/           Vite React app, components, i18n, tests
+└── README.md
+```
 
-Testing
-- Backend: cd backend && pytest
-- Frontend: cd frontend && npm test
+---
 
-Notes & troubleshooting
-- Tests run in jsdom. The frontend's i18n module guards access to window.localStorage to avoid jsdom errors.
-- Vite may emit an ExperimentalWarning about localStorage when running tests with newer Node; that's informational only.
-- If export .apkg fails, verify genanki is installed and writable /tmp is available (export path is /tmp by default).
+## ⚡ Quickstart (development)
 
-Contributing
-- Please keep changes focused and add tests when possible. Run linters/tests before opening PRs.
+**Prerequisites**  
+Python 3.10+, Node 18+, npm or yarn
 
-License
-- MIT (add your preferred license file)
+### 🔧 Backend
 
-If you want, I can also:
-- Add a one-command dev script to start backend+frontend together
-- Add Docker compose for easier local setup
-- Add more API docs or OpenAPI specification
+```bash
+cd backend
 
-Enjoy AnkiUtility — tell me if you'd like a short start-up checklist or a demo walkthrough.
+# Create & activate virtual environment
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set Flask app entry point
+export FLASK_APP=app             # Windows PowerShell: $env:FLASK_APP = 'app'
+
+# Run migrations (creates SQLite DB at backend/anki.db)
+flask db upgrade
+
+# Start server
+flask run --port 5000            # or: gunicorn -w 1 "app:create_app()"
+```
+
+> **Environment**  
+> The app uses SQLite by default. To override, set `SQLALCHEMY_DATABASE_URI` in the instance config or as an environment variable before starting Flask.
+
+### 🖥️ Frontend
+
+```bash
+cd frontend
+
+npm install          # Install packages
+npm run dev          # Vite dev server → usually http://localhost:5173
+npm test             # Run frontend unit tests (Vitest)
+```
+
+### 🔗 Running Full App
+
+Start both servers. The frontend (port 5173) calls backend APIs at `/api` (CORS is enabled for development).
+
+---
+
+## 🗄️ Database & Migrations
+
+Flask‑Migrate is configured. After changing models:
+
+```bash
+flask db migrate -m "Your message"
+flask db upgrade
+```
+
+---
+
+## 🌐 API Overview (important endpoints)
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/cards?project_id=:id` | GET | List non‑deleted cards for a project |
+| `/api/cards` | POST | Create card `{ fields, tags, deck_id?, template_id? }` |
+| `/api/cards/:id` | PUT | Update card |
+| `/api/cards/:id` | DELETE | Soft‑delete card |
+| `/api/cards/batch-delete` | POST | Batch soft‑delete `{ ids: [...] }` |
+| `/api/cards/restore` | POST | Restore soft‑deleted `{ ids: [...] }` |
+| `/api/cards/permanent-delete` | POST | Permanently delete `{ ids: [...] }` |
+| `/api/templates` | GET | List all templates |
+| `/api/templates` | POST | Create template |
+| `/api/templates/:id` | PUT | Update template |
+| `/api/imports/upload` | POST | Upload CSV → returns columns & sample rows |
+| `/api/imports/apply` | POST | Apply mapped rows to create cards |
+| `/api/export/json` | POST | Export selected cards as JSON |
+| `/api/export/apkg` | POST | Export project/card IDs as `.apkg` Anki package |
+| `/api/preview` | POST | Render live preview for a template + fields |
+
+---
+
+## 🌍 I18n & RTL Behaviour
+
+- UI strings are in `frontend/src/i18n.js`. Supported locales: `en`, `fa`, `ar`.
+- Switching locale sets `document.documentElement.dir` to `ltr` or `rtl` automatically.
+- Code editors (HTML/CSS) are **always LTR** so code stays readable even in RTL locales.
+
+---
+
+## 🧪 Testing
+
+```bash
+# Backend
+cd backend && pytest
+
+# Frontend
+cd frontend && npm test
+```
+
+- Frontend tests run in `jsdom`. The i18n module guards `window.localStorage` access to avoid jsdom errors.
+- Vite may show an `ExperimentalWarning` about `localStorage` with newer Node – this is harmless.
+
+---
+
+## 🔧 Notes & Troubleshooting
+
+- The SQLite database is created at `backend/anki.db` after the first migration.
+- If `.apkg` export fails, ensure `genanki` is installed and `/tmp` is writable (default export path).
+- For custom export paths, adjust the export endpoint or set an environment variable.
+- The backend automatically creates default templates and a demo project on first run to help you start quickly.
+
+---
+
+## 🤝 Contributing
+
+Keep changes focused and add tests where possible. Run linters and the full test suite before opening a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** – see the `LICENSE` file for details.
+
+---
+
+<p align="center">
+  <sub>Enjoy AnkiUtility — drop a ⭐ if you find it useful!</sub>
+</p>
