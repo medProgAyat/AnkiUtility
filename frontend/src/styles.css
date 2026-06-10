@@ -1,0 +1,116 @@
+:root{
+  --bg:#fbfbfd;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --panel:#ffffff;
+  --border:#e6e9ef;
+  --danger:#dc2626;
+  --success:#16a34a;
+}
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; background:var(--bg); color:#0f172a }
+.header{ display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:linear-gradient(90deg,#fff,#f7f9ff); border-bottom:1px solid var(--border)}
+.header h1{ margin:0; font-size:18px }
+.toolbar{ display:flex; gap:8px; align-items:center }
+.panel{ background:var(--panel); border:1px solid var(--border); padding:14px; border-radius:8px; box-shadow: 0 6px 18px rgba(16,24,40,0.04); margin-bottom:12px }
+.controls input, .controls select, .controls textarea{ padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:linear-gradient(180deg,#fff,#fbfdff); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(16,24,40,0.03); transition: box-shadow .12s ease, transform .12s ease }
+.controls input::placeholder, .controls textarea::placeholder{ color:#94a3b8 }
+.controls label{ font-size:13px; color:var(--muted); margin-right:8px }
+.button{ background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; box-shadow:0 6px 18px rgba(37,99,235,0.08) }
+.button.secondary{ background:#f1f5f9; color:#111; border:1px solid var(--border) }
+.small{ padding:6px 8px; font-size:13px; border-radius:8px }
+.table { width:100%; border-collapse: collapse; background:transparent }
+.table th, .table td{ border-bottom:1px solid var(--border); padding:10px; text-align:left; vertical-align:middle }
+.table th{ background:transparent; font-weight:700; color:var(--muted); font-size:13px }
+.table tr:nth-child(even){ background: rgba(37,99,235,0.02) }
+.table tr:hover{ background: rgba(37,99,235,0.04) }
+.field-row{ display:flex; gap:10px; margin-bottom:10px; align-items:center }
+.field-row input{ padding:12px; border:1px solid var(--border); border-radius:10px; background:linear-gradient(180deg,#fff,#fcfdff); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); transition: box-shadow .12s, transform .12s }
+.field-name{ min-width:120px; max-width:160px; padding:10px 12px; border-radius:10px; background:#f8fafc; border:1px solid var(--border); color:var(--muted); font-weight:700 }
+.field-value{ flex:1; padding:12px; border-radius:10px; border:1px solid var(--border); background:#fff; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); transition: box-shadow .12s, transform .12s }
+.toggle-link{ color:var(--accent); cursor:pointer; text-decoration:underline; margin-left:8px }
+.note{ font-size:13px; color:var(--muted) }
+
+/* tag chips */
+.chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+.chip{ background:#eef2ff; color:#1e293b; padding:6px 10px; border-radius:999px; font-size:13px; display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(37,99,235,0.08) }
+.chip .remove{ background:transparent; border:none; color:#4b5563; cursor:pointer; padding:0; margin-left:4px }
+
+/* small helper text */
+.helper{ font-size:12px; color:var(--muted); margin-top:6px }
+
+/* action buttons inside table */
+.action-btn{ padding:6px 8px; border-radius:6px; border:none; cursor:pointer }
+.action-btn.ghost{ background:transparent; border:1px solid var(--border); color:#111 }
+.action-btn.warn{ background:var(--danger); color:#fff }
+
+/* badges */
+.badge{ display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; background:#f1f5f9; color:#0f172a; border:1px solid var(--border) }
+
+/* toast styling */
+.toast-container{ position:fixed; right:16px; top:16px; z-index:9999; display:flex; flex-direction:column; gap:8px }
+
+/* RTL: move toasts to the left side for RTL languages */
+[dir="rtl"] .toast-container{ left:16px; right:auto; }
+[dir="rtl"] .toast{ text-align: left; }
+
+/* anchored toasts */
+.toast--anchored{ max-width:320px; min-width:220px; box-shadow:0 12px 30px rgba(2,6,23,0.1) }
+
+/* progress bar */
+.toast{ position:relative; overflow:hidden }
+.toast-progress{ position:absolute; left:0; bottom:0; height:4px; background:rgba(255,255,255,0.5); transition: width 120ms linear }
+
+/* ensure anchored toasts don't inherit page alignment weirdness */
+.toast--anchored .toast-progress{ background:rgba(37,99,235,0.9) }
+
+.toast{ padding:10px 14px; border-radius:10px; box-shadow:0 8px 24px rgba(2,6,23,0.08); color:#fff; font-weight:600 }
+.toast.info{ background: linear-gradient(90deg,#2563eb,#3b82f6) }
+.toast.error{ background: linear-gradient(90deg,#fb7185,#ef4444) }
+.toast button.small{ background:rgba(255,255,255,0.12); border:none; color:#fff; padding:6px 8px; border-radius:6px }
+
+/* interactions */
+.button:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(37,99,235,0.12) }
+.action-btn{ transition: all 150ms ease }
+.action-btn.ghost:hover{ background: rgba(16,24,40,0.03); transform:translateY(-1px) }
+.action-btn.warn:hover{ filter:brightness(0.95) }
+
+input:focus, select:focus, textarea:focus{ outline:none; box-shadow:0 6px 20px rgba(37,99,235,0.18); border-color:var(--accent); transform: translateY(-2px) }
+
+/* floating label */
+.input-wrapper{ position:relative; display:block; min-width:0 }
+/* ensure enough space on the right for the clear button */
+.float-input{ width:100%; padding:14px 36px 14px 12px; border:1px solid var(--border); border-radius:14px; background:linear-gradient(180deg,#fff,#fcfdff); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); transition: box-shadow .12s, transform .12s; box-sizing: border-box; min-width:0 }
+.floating-label{ display:none !important }
+/* floating-label removed per user preference */
+.floating-label.filled{ display:none !important }
+.input-wrapper button[aria-label="clear-input"]{ background:transparent; border:none; font-size:18px; line-height:1 }
+
+.clear-btn{ position:absolute; top:50%; transform:translateY(-50%); right:8px; background:transparent; border:none; cursor:pointer; font-size:18px; color:#64748b; padding:6px; border-radius:8px }
+.clear-btn:hover{ background:rgba(0,0,0,0.04) }
+
+
+/* modal animation */
+@keyframes modal-in { from { transform: translateY(-8px) scale(0.995); opacity:0 } to { transform: translateY(0) scale(1); opacity:1 } }
+
+/* apply to NewCardModal container */
+div[style*="z-index:2000"] > div { animation: modal-in 160ms ease both }
+
+/* panel subtle spacing */
+.panel{ padding:16px }
+
+/* RTL support */
+[dir="rtl"] { direction: rtl }
+[dir="rtl"] .toolbar { direction: rtl }
+[dir="rtl"] .table th, [dir="rtl"] .table td { text-align: right }
+[dir="rtl"] .clear-btn { right: auto; left: 8px }
+[dir="rtl"] .float-input { padding:14px 12px 14px 36px }
+[dir="rtl"] .field-row { direction: rtl }
+
+/* Keep code editors and template code LTR even when page is RTL. Code is not translated and must remain left-to-right. */
+.code-area { direction: ltr !important; unicode-bidi: embed !important; text-align: left !important }
+.code-area .cm-editor, .code-area .cm-scroller, .code-area .cm-content { direction: ltr !important; unicode-bidi: embed !important; text-align: left !important }
+
+/* Ensure in RTL pages the code areas still render LTR */
+[dir="rtl"] .code-area { direction: ltr !important; unicode-bidi: embed !important; text-align: left !important }
+[dir="rtl"] .code-area .cm-editor, [dir="rtl"] .code-area .cm-scroller, [dir="rtl"] .code-area .cm-content { direction: ltr !important; unicode-bidi: embed !important; text-align: left !important }
+
