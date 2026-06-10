@@ -1,7 +1,7 @@
 import json
 import pytest
-from backend.app import create_app, db
-from backend.app.models import Card
+from app import create_app, db
+from app.models import Card
 
 
 @pytest.fixture
