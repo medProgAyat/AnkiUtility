@@ -1,5 +1,6 @@
 <!-- Persian Translation Badge -->
 [![README فارسی](https://img.shields.io/badge/📖_README-فارسی-0066cc?style=for-the-badge&logo=googletranslate&logoColor=white)](README_fa.md)
+[![wakatime](https://wakatime.com/badge/user/e7c61e6b-1a47-4384-8cd8-77721e48dccf/project/be7cdcf6-7046-43d2-b791-b8cbffcbc569.svg)](https://wakatime.com/badge/user/e7c61e6b-1a47-4384-8cd8-77721e48dccf/project/be7cdcf6-7046-43d2-b791-b8cbffcbc569)
 
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/nicehash/awesome-anki/main/assets/anki-logo.svg" height="38" alt="Anki logo" /> AnkiUtility
