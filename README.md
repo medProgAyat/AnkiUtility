@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/Tests-Pytest-0A9EDC?logo=pytest&logoColor=white" alt="Pytest" />
   <img src="https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest&logoColor=white" alt="Vitest" />
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License MIT" />
-  <img src="https://wakatime.com/badge/user/e7c61e6b-1a47-4384-8cd8-77721e48dccf/project/be7cdcf6-7046-43d2-b791-b8cbffcbc569.svg)](https://wakatime.com/badge/user/e7c61e6b-1a47-4384-8cd8-77721e48dccf/project/be7cdcf6-7046-43d2-b791-b8cbffcbc569"/>
+  <img src="https://wakatime.com/badge/user/e7c61e6b-1a47-4384-8cd8-77721e48dccf/project/be7cdcf6-7046-43d2-b791-b8cbffcbc569.svg" alt="Wakatime"/>
 </p>
 
 ---
